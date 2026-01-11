@@ -1,0 +1,8 @@
+# Python dependencies for sentinel-rs
+
+# Testing
+pytest>=7.0.0
+pytest-benchmark>=4.0.0
+
+# For development and benchmarking
+# The sentinel-rs package itself is built with maturin

@@ -4,17 +4,42 @@ build-backend = "maturin"
 
 [project]
 name = "sentinel-rs"
+version = "0.1.1"
 requires-python = ">=3.8"
+description = "High-performance pattern matching engine for Python, powered by Rust"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Harsh Raj", email = "saketharshraj@gmail.com"}
+]
+keywords = ["rust", "regex", "pattern-matching", "log-processing", "anonymization", "performance"]
 classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Programming Language :: Rust",
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Text Processing",
+    "Topic :: System :: Logging",
 ]
-dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/saketharshraj/sentinel-rs"
+Documentation = "https://github.com/saketharshraj/sentinel-rs#readme"
+Repository = "https://github.com/saketharshraj/sentinel-rs"
+Issues = "https://github.com/saketharshraj/sentinel-rs/issues"
 [project.optional-dependencies]
 tests = [
     "pytest",
     "pytest-benchmark",
 ]
+
 [tool.maturin]
-python-source = "python"

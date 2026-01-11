@@ -54,8 +54,15 @@ coverage.xml
 .ropeproject
 
 # Django stuff:
-*.log
 *.pot
+
+# Test log files (generated)
+test_logs.log
+*.scrubbed
+*_output.log
+*_input.log
+benchmark_test.log
+demo_*.log
 
 .DS_Store
 
