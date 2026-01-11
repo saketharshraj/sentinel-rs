@@ -10,11 +10,51 @@ Process millions of log lines per second with parallel regex matching. Perfect f
 
 ## Why Sentinel-RS?
 
-✅ **10-50x faster** than pure Python regex processing  
+✅ **3-16x faster** than pure Python (average 12x across file sizes)  
 ✅ **True parallelism** - uses all CPU cores, bypasses Python's GIL  
 ✅ **Pattern agnostic** - define any regex patterns you need  
+✅ **1M+ lines/sec** - peak throughput of 1,053,636 lines/second  
 ✅ **Memory efficient** - buffered I/O and memory-mapped file support  
-✅ **Zero overhead** - native Rust speed with Pythonic API  
+
+## Benchmarks
+
+Real-world performance tested on a modern multi-core system:
+
+### Performance Scaling
+
+<p align="center">
+  <img src="benchmarks/results/performance_scaling.png" alt="Performance Scaling" width="100%">
+</p>
+
+### Key Results
+
+| File Size | Lines | Rust Time | Python Time | **Speedup** |
+|-----------|-------|-----------|-------------|-------------|
+| 76 MB | 1,000,000 | 1.07s | 16.76s | **15.7x** ⚡ |
+| 38 MB | 500,000 | 0.48s | 7.71s | **16.2x** ⚡ |
+| 7.5 MB | 100,000 | 0.10s | 1.54s | **15.3x** ⚡ |
+| 3.8 MB | 50,000 | 0.06s | 0.87s | **15.2x** ⚡ |
+
+**Peak Performance:**
+- **1,053,636 lines/second** (Rust)
+- **16.24x faster** than pure Python (maximum speedup)
+- **12.06x faster** average across all file sizes
+
+### Throughput Comparison
+
+<p align="center">
+  <img src="benchmarks/results/throughput_comparison.png" alt="Throughput Comparison" width="100%">
+</p>
+
+### Pattern Complexity Impact
+
+<p align="center">
+  <img src="benchmarks/results/pattern_complexity.png" alt="Pattern Complexity" width="100%">
+</p>
+
+**Finding:** More patterns = bigger speedup! With 10 patterns, Rust is **15.6x faster**.
+
+> **Run benchmarks yourself:** `python benchmarks/run_benchmarks.py`
 
 ## Installation
 
@@ -191,15 +231,33 @@ print(f"Speedup: {results['speedup']:.2f}x")
 
 ## Performance
 
-Typical performance on modern hardware (M1/Ryzen/Intel i7+):
+Real benchmarks from our test suite (see [benchmarks/](benchmarks/) for details):
 
 | File Size | Lines | Pure Python | Sentinel-RS | Speedup |
 |-----------|-------|-------------|-------------|---------|
-| 10 MB     | 100K  | 2.5s        | 0.15s       | **16x** |
-| 100 MB    | 1M    | 25s         | 1.2s        | **20x** |
-| 1 GB      | 10M   | 250s        | 11s         | **22x** |
+| 76 MB | 1,000,000 | 16.76s | 1.07s | **15.7x** ⚡ |
+| 38 MB | 500,000 | 7.71s | 0.48s | **16.2x** ⚡ |
+| 7.5 MB | 100,000 | 1.54s | 0.10s | **15.3x** ⚡ |
+| 3.8 MB | 50,000 | 0.87s | 0.06s | **15.2x** ⚡ |
+
+**Throughput:**
+- **Rust:** Up to 1,053,636 lines/second
+- **Python:** ~65,000 lines/second
+- **Speedup increases** with more complex regex patterns
 
 *Performance scales linearly with CPU core count*
+
+### Run Your Own Benchmarks
+
+```bash
+# Install matplotlib for graphs
+pip install matplotlib
+
+# Run comprehensive benchmark suite
+python benchmarks/run_benchmarks.py
+
+# Results saved to benchmarks/results/
+```
 
 ## Pattern Examples
 
@@ -260,6 +318,24 @@ The demo showcases:
 2. File processing
 3. Performance benchmarking (Rust vs Python)
 4. Custom pattern examples
+
+### Run Comprehensive Benchmarks
+
+```bash
+# Install matplotlib for graphs
+pip install matplotlib
+
+# Run full benchmark suite
+python benchmarks/run_benchmarks.py
+```
+
+This generates:
+- Performance graphs (PNG files)
+- Detailed timing data
+- Throughput analysis
+- Pattern complexity comparison
+
+See [benchmarks/README.md](benchmarks/README.md) for detailed results.
 
 ### Generate Test Data
 

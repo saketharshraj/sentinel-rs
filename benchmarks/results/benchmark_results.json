@@ -1,0 +1,96 @@
+[
+  {
+    "benchmark": "file_size_scaling",
+    "results": [
+      {
+        "lines": 1000,
+        "file_size_mb": 0.07428836822509766,
+        "rust_time": 0.012806651997379959,
+        "python_time": 0.039587835999554954,
+        "speedup": 3.0911932336143755,
+        "rust_throughput": 78084.42051869485,
+        "python_throughput": 25260.28449777457
+      },
+      {
+        "lines": 5000,
+        "file_size_mb": 0.37355899810791016,
+        "rust_time": 0.020888847997412086,
+        "python_time": 0.1568277660117019,
+        "speedup": 7.5077268995940445,
+        "rust_throughput": 239362.17069603116,
+        "python_throughput": 31882.10944500044
+      },
+      {
+        "lines": 10000,
+        "file_size_mb": 0.7477474212646484,
+        "rust_time": 0.018959512002766132,
+        "python_time": 0.21448708600655664,
+        "speedup": 11.312901195730337,
+        "rust_throughput": 527439.7357137162,
+        "python_throughput": 46622.85355349697
+      },
+      {
+        "lines": 50000,
+        "file_size_mb": 3.7599735260009766,
+        "rust_time": 0.05739569901197683,
+        "python_time": 0.872784485007287,
+        "speedup": 15.206444037299066,
+        "rust_throughput": 871145.4143901347,
+        "python_throughput": 57287.91111540273
+      },
+      {
+        "lines": 100000,
+        "file_size_mb": 7.525327682495117,
+        "rust_time": 0.10014585500175599,
+        "python_time": 1.5356083030055743,
+        "speedup": 15.33371803534603,
+        "rust_throughput": 998543.5742522401,
+        "python_throughput": 65120.773184330064
+      },
+      {
+        "lines": 500000,
+        "file_size_mb": 37.838775634765625,
+        "rust_time": 0.4745473579969257,
+        "python_time": 7.705120733007789,
+        "speedup": 16.236779329109034,
+        "rust_throughput": 1053635.6205005764,
+        "python_throughput": 64891.90985133582
+      },
+      {
+        "lines": 1000000,
+        "file_size_mb": 75.730544090271,
+        "rust_time": 1.0674135840090457,
+        "python_time": 16.7586376919935,
+        "speedup": 15.700228986266563,
+        "rust_throughput": 936843.9890413888,
+        "python_throughput": 59670.721354502086
+      }
+    ]
+  },
+  {
+    "benchmark": "pattern_complexity",
+    "results": [
+      {
+        "name": "Simple (1 pattern)",
+        "num_patterns": 1,
+        "rust_time": 0.06489431198860984,
+        "python_time": 0.13951108600303996,
+        "speedup": 2.149819941500062
+      },
+      {
+        "name": "Medium (5 patterns)",
+        "num_patterns": 5,
+        "rust_time": 0.1555902099935338,
+        "python_time": 1.8516759799967986,
+        "speedup": 11.900980017147305
+      },
+      {
+        "name": "Complex (10 patterns)",
+        "num_patterns": 10,
+        "rust_time": 0.13804342999355868,
+        "python_time": 2.155850915994961,
+        "speedup": 15.617193198514093
+      }
+    ]
+  }
+]
